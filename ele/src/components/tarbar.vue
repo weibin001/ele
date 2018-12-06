@@ -1,17 +1,31 @@
 <template>
 	<footer class="ele-footer">
-		<router-link tag='a' to='/' activeClass='active'>
-			首页
-		</router-link>
-		<router-link tag='a' to='/' activeClass='active'>
-			首页
-		</router-link>
-		<router-link tag='a' to='/' activeClass='active'>
-			首页
-		</router-link>
-		<router-link tag='a' to='/' activeClass='active'>
-			首页
-		</router-link>
+		<section class="ele-footer-container">
+			<router-link tag='a' to='/' activeClass='active'>
+				<span class="iconfont">
+					&#xe604;
+				</span>
+				<span class="text">首页</span>
+			</router-link>
+			<router-link tag='a' to='/discover' activeClass='active'>
+				<span class="iconfont">
+					&#xe603;
+				</span>
+				<span class="text">发现</span>
+			</router-link>
+			<router-link tag='a' to='/order' activeClass='active'>
+				<span class="iconfont">
+					&#xe602;
+				</span>
+				<span class="text">订单</span>
+			</router-link>
+			<router-link tag='a' to='/user' activeClass='active'>
+				<span class="iconfont">
+					&#xe911;
+				</span>
+				<span class="text">我的</span>
+			</router-link>
+		</section>
 	</footer>
 </template>
 
@@ -26,6 +40,9 @@ export default{
 
 <style scoped>
 	.ele-footer{
+		height: 16vw;
+	}
+	.ele-footer-container{
 		position: fixed;
 		left: 0;
 		bottom: 0;
@@ -36,13 +53,24 @@ export default{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		align-items: center;
 		z-index: 999;
+		box-shadow: 0 -0.266667vw 0.533333vw rgba(0,0,0,.1);
 	}
 	
 	.ele-footer a{
 		flex: 1;
-		display: inline-block;
+		display: block;
 		text-align: center;
-		line-height: 12.13333vw;
+		color: #8e8e93;
 	}
+	
+	.ele-footer a.active{
+		color: #0089dc;
+	}
+	.ele-footer a>.text{
+		display: block;
+		font-size: .266667rem;
+	}
+	
 </style>
