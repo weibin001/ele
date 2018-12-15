@@ -7,7 +7,7 @@ html {
   /*标准字体大小设置 14 像素「rem 参照对象」*/
   /*font-size: 14px;*/
   /*滚动事件发生在 html 元素上；JS 中可以监听 html 的滚动*/
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   /*让 html 和浏览器窗口高度一致*/
   height: 100%;
   /*少数浏览器默认背景色为浅灰色，所以设置默认背景颜色为纯白*/
@@ -33,7 +33,7 @@ body {
   /*让绝对定位元素，根据 body 定位*/
   position: relative;
   /*设置网页基本字体颜色为浅灰色*/
-  color: #666;
+  color: #333;
   /*使字体渲染更顺滑*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -149,6 +149,7 @@ optgroup {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ol,
