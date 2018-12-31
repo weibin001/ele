@@ -1,7 +1,7 @@
 <template>
 	<footer class="ele-footer">
 		<section class="ele-footer-container">
-			<router-link tag='a' to='/' activeClass='active'>
+			<router-link tag='a' to='/msite' activeClass='active'>
 				<span class="iconfont">
 					&#xe604;
 				</span>
@@ -34,6 +34,12 @@ export default{
 	name:'tarbar',
 	data(){
 		return{}
+	},
+	methods:{
+		toggle:function(data){
+			this.$emit('toggleCom',data);
+			this.router.push(`/${data}`)
+		}
 	}
 }
 </script>

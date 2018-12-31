@@ -7,15 +7,17 @@ import 'lib-flexible'
 import '../static/css/base.css'
 import './fonts/fonts.css'
 import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import WebpPlugun from 'vue-webp-plugin';
 import Mock from './mock/mock'
-
+import store from './vuex'
 Vue.config.productionTip = false
 Vue.use(Mint,WebpPlugun)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

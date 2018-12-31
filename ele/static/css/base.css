@@ -249,3 +249,6 @@ template {
   width: 100%;
   height: auto;
 }
+.mint-swipe-items-wrap{
+	transform: translateZ(0); /*防止屏幕抖动*/
+}

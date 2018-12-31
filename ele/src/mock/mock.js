@@ -1,7 +1,7 @@
 const Mock = require('mockjs');
 
 let swiper = Mock.mock({
-	'swiper|20':[
+	'swiper|15-20':[
 		{
 			"name|+1":[
 				"美食",
@@ -92,11 +92,11 @@ let filter = Mock.mock({
 						"领",
 					],
 					"id|+1":[
-						1,
+						8,
 						2,
 						3,
 						4,
-						5,
+						7,
 						6
 					],
 					"name|+1":[
@@ -120,6 +120,16 @@ let filter = Mock.mock({
 						1,
 						2,
 						3
+					],
+					"cost_from|+1":[
+						null,
+						20,
+						40,
+					],
+					"cost_to|+1":[
+						20,
+						40,
+						null
 					]
 				}
 			],
@@ -148,10 +158,10 @@ let filter = Mock.mock({
 					],
 					"id|+1":[
 						1,
-						2,
-						3,
-						4,
-						5
+						8,
+						7,
+						5,
+						4
 					]
 				}
 			]
@@ -176,15 +186,15 @@ let filter = Mock.mock({
 						"通用排序",
 					],
 					"value|+1":[
+						0,
+						7,
+						6,
 						1,
 						2,
-						3,
-						4,
-						5,
-						6,
-						7,
-						8,
-						9
+						9,
+						10,
+						11,
+						12
 					]
 				}
 			],
@@ -195,8 +205,8 @@ let filter = Mock.mock({
 						"quality_union",
 					],
 					"value|+1":[
-						10,
-						11
+						5,
+						3
 					],
 					"name|+1":[
 						"距离最近",
