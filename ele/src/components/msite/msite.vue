@@ -51,3 +51,6 @@
 		transform: translateX(100%);
 	}
 </style>
+<style>
+	html{ background-color:#fff }
+</style>

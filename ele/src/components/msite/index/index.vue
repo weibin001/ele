@@ -34,12 +34,9 @@
 		<div style="position: sticky;top:13.23vw;z-index:100;">
 			<FilterList ref='filter_list' :toggle='filter_Model' @toggle = "controlModel" @showtitle ='shoplist_title_show = true'></FilterList>
 		</div>
-		<section class="noDataTip-wrapper" v-if='noDataTip || noLogin' >
-        	<img :src="noDataTip? '//fuss10.elemecdn.com/2/67/64f199059800f254c47e16495442bgif.gif' : '//fuss10.elemecdn.com/d/60/70008646170d1f654e926a2aaa3afpng.png'" />
-        	<h3	v-text="noDataTip?'输入地址后才能订餐哦':'没有结果' "></h3>
-        	<p v-if="noLogin">登录后查看更多商家</p>
-        	<button v-text="noDataTip?'手动选择地址':'登录'"></button>
-        </section>
+        <noDataTip :msg='noDataTip'>
+        	<button slot='button' v-text="(noDataTip=='login')?'立即登录':'手动选择地址'" @click="btn()"></button>
+        </noDataTip>
 		<ShopList :shoplist = 'shoplist' :loadAll = 'loadAll' @loadMore = "loadMore"></ShopList>
 		<div class="spinner" v-show='load_location || load_data'>
 			<mt-spinner :type="0" color="#26a2ff" :size="40"></mt-spinner>
@@ -49,12 +46,13 @@
 </template>
 
 <script>
-	/*如果当前页觉得乱的话 可使用传给子组件商品列表url 在子组件上获取（请求和无限加载函数搬过去） */
+	/*如果当前页觉得乱的话 可使用传给子组件商品列表请求的url 在子组件上请求数据（请求和无限加载函数搬过去） */
 	/*$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM*/
 	import axios from 'axios';
 	import { Spinner } from 'mint-ui';
 	import ShopList from '../../common/shoplist' 
 	import FilterList from '../../common/filterlist'
+	import NoDataTip from '../../common/noDataTip'
 	import Banner from './banner'
 	import Foodentry from './foodentry'
 	import FoodentryWrap from './foodentryWrap'
@@ -67,6 +65,7 @@
 			Spinner,
 			ShopList,
 			FilterList,
+			NoDataTip,
 			Banner,
 			Foodentry,
 			FoodentryWrap
@@ -80,7 +79,7 @@
 				load_location:true,			//加载定位
 				load_data:false,			//加载数据
 				backtop:false,				//返回顶部
-				noDataTip:false,			//没有地址提示框
+				noDataTip:'',			    //没有数据提示框
 				noLogin:false,				//未登录提示框
 				filter_Model:false,			//模态框
 				shoplist_title:'',
@@ -116,7 +115,7 @@
 			},
 			city_info:function(cur_val){					//监听vuex 用户地址变化
 				this.reShoplist();
-				this.noDataTip = false;
+				this.noDataTip = '';
 			},
 			userId:function(cur_val){},
 			filter_data:{
@@ -139,6 +138,18 @@
 				this.$nextTick(()=>{
 					this.$refs.filter_list?(this.$refs.filter_list.open = ''):''
 				})
+			},
+			btn:function(){
+				switch(this.noDataTip){
+					case 'login':
+						this.$router.push();
+						break;
+					case 'chose_city':
+						this.$emit('openSearch');
+						break;
+					default:
+						break;
+				}
 			},
 			loadMore:function(){
 				this.offset += 8;
@@ -200,7 +211,7 @@
 			},
 			getCityError:function(){							//获取失败进入城市选择界面
 				this.$emit('openSearch');
-				this.noDataTip = true;
+				this.noDataTip = 'chose_city';
 				this.load_location = false;
 				this.city = '未能获取地址';
 			},
@@ -214,7 +225,7 @@
 					this.load_data = false;
 					switch(error.response.status){
 						case 401:
-							this.noLogin = true;
+							this.noDataTip = 'login';
 							break;
 						default:
 							break;
@@ -359,38 +370,5 @@
 	    z-index: 3;
 	    background: rgba(0,0,0,.5);
 	    transition: all .3s ease-in-out;
-	}
-	
-	.noDataTip-wrapper{
-		flex-direction: column;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.noDataTip-wrapper img{
-		display: block;
-		width: 53.333333vw;
-	}
-	.noDataTip-wrapper h3{
-		margin: 3.333333vw 0 2.666667vw;
-	    color: #6a6a6a;
-	    font-weight: 400;
-	    font-size: .453333rem;
-	}
-	.noDataTip-wrapper button{
-		padding: 2.666667vw;
-		min-width: 32vw;
-    	border: none;
-    	border-radius: .533333vw;
-	    background-color: #56d176;
-	    color: #fff;
-	    text-align: center;
-	    font-size: 1.2em;
-	    font-family: inherit;
-	}
-	.noDataTip-wrapper p {
-	    margin: 0 0 3.333333vw;
-	    color: #999;
-	    font-size: .306667rem;
 	}
 </style>

@@ -218,6 +218,64 @@ let filter = Mock.mock({
 	]
 })
 
+let discover = Mock.mock({
+	"discover|6":[
+		{
+			"corner_marker|+1":[
+				"限时优惠",
+				"特价换购",
+				"特价换购",
+				"特价换购",
+				"特价换购",
+				"特价换购"
+			],
+			"image_hash|+1":[
+				"https://fuss10.elemecdn.com/d/e8e9079650047f1cc00c16474a1e8bdjpeg.jpeg?imageMogr/format/webp/",
+				"https://fuss10.elemecdn.com/5785c1ca7ceca079926933ca418c9eb7jpeg.jpeg?imageMogr/format/webp/",
+				"https://fuss10.elemecdn.com/eb5605a11eae79849240113271dd1b94jpeg.jpeg?imageMogr/format/webp/",
+				"https://fuss10.elemecdn.com/e4d510b09923a4be3d666cd4ee2e1dd7jpeg.jpeg?imageMogr/format/webp/",
+				"https://fuss10.elemecdn.com/7adf0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/",
+				"https://fuss10.elemecdn.com/b5ff1014b884c14aafde894e985f1116jpeg.jpeg?imageMogr/format/webp/",
+			],
+			"original_price|+1":[
+				3,
+				99,
+				239,
+				139,
+				139,
+				249
+			],
+			"points_required|+1":[
+				90,
+				9,
+				9,
+				9,
+				9,
+				9
+			],
+			"title|+1":[
+				"3元饿了么鲜果超市红包",
+				"扫地机器人",
+				"电动按摩理疗仪",
+				"4D充电剃须刀",
+				"悬浮机械手感发光游戏键鼠套装",
+				"无线蓝牙耳机",
+			],
+			"url|+1":[
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1202677",
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1990028",
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1990014",
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1990014",
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1990014",
+				"https://h5.ele.me/exchange/?dbredirect=https://activity.m.duiba.com.cn/mobile/appItemDetail?appItemId=1990014"
+			]
+		}	
+	]
+})
+
+
+
 Mock.mock('/restapi/shopping/v2/entries?latitude=31.588285&longitude=120.777712&templates[]=main_template&templates[]=favourable_template&templates[]=svip_template&terminal=h5',swiper)
 Mock.mock('/restapi/shopping/v2/banners?consumer=1&type=1&latitude=31.588285&longitude=120.777712',banner)
 Mock.mock('/pizza/shopping/restaurants/batch_filter?latitude=31.588285&longitude=120.777712&terminal=h5',filter)
+Mock.mock('/restapi/member/gifts/suggest',discover)

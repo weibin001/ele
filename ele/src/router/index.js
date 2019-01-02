@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
-import msite from '@/components/msite/msite'
-import discover from '@/components/discover/discover'
 
 Vue.use(Router)
 
@@ -11,17 +9,31 @@ export default new Router({
     {
       path: '/',
       component: home,
-      children: [
+      children:[
       	{
+      		path:'',
+      		component: resolve => require(['@/components/msite/msite'],resolve)
+      	},
+      	{ 
       		path: '/msite',
       		name: 'msite',
-      		component: msite
+      		component: resolve => require(['@/components/msite/msite'],resolve)
       	},
-      	{
-      		path: 'discover',
+      	{ 
+      		path: '/discover',
       		name: 'discover',
-      		component: discover
-      	}
+      		component: resolve => require(['@/components/discover/discover'],resolve)
+      	},
+      	{ 
+      		path: '/order',
+      		name: 'order',
+      		component: resolve => require(['@/components/order/order'],resolve)
+      	},
+      	{ 
+      		path: '/user',
+      		name: 'user',
+      		component: resolve => require(['@/components/user/user'],resolve)
+      	},
       ]
     }
   ]

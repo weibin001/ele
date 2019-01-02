@@ -6,6 +6,7 @@
 </template>
 
 <script>
+	/*不建议使用mint-ui的tarbar  刷新时selected会重置，需要监听session 或者监听路由，在create时赋值*/
 	import tarbar from './tarbar';
 	export default {
 	  name: 'home',
