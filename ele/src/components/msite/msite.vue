@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="msite">
 		<index :class='[{unscrollable:(search || chose)}]' @openSearch = 'openSearch'></index>
 		<transition name='slide'>
 			<SearchCity v-show='search' @close = 'closeAll' ></SearchCity>
@@ -40,6 +40,12 @@
 </script>
 
 <style scoped lang="scss">
+	.msite{
+		/*position: fixed;*/
+		width: 100%;
+		height: 100vh;
+		background: #fff;
+	}
 	.unscrollable {
 	    height: 100vh;
 	    overflow: hidden;
@@ -50,7 +56,4 @@
 	.slide-enter,.slide-leave-to{
 		transform: translateX(100%);
 	}
-</style>
-<style>
-	html{ background-color:#fff }
 </style>

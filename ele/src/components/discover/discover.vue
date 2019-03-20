@@ -91,7 +91,6 @@
 		},
 		mounted(){
 			axios.get('/restapi/member/gifts/suggest').then((discover)=>{
-				console.log(discover)
 				this.discover = discover.data.discover;
 				this.discover = this.discover.slice(0,3);
 			}).catch(error =>{
@@ -287,7 +286,4 @@
 	    width: 1.333333vw;
 	    margin-left: 1.466667vw;
 	}
-</style>
-<style>
-	html{background-color:#f5f5f5}
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<section v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="true" v-if="shoplist.length != 0">
-		<div class="container" v-for="(data,index) of shoplist">
+		<div class="container" v-for="(data,index) of shoplist" @click="$router.push({ path:'/shop'})">
 			<div class="shopinfo">
 				<div class="logo-container">
 					<div class="logo-image">

@@ -252,3 +252,19 @@ template {
 .mint-swipe-items-wrap{
 	transform: translateZ(0); /*防止屏幕抖动*/
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 941946 */
+  src: url('//at.alicdn.com/t/font_941946_qjo50acyta9.eot');
+  src: url('//at.alicdn.com/t/font_941946_qjo50acyta9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_941946_qjo50acyta9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_941946_qjo50acyta9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_941946_qjo50acyta9.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: .533333rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+}

@@ -1,5 +1,6 @@
 <template>
-	<section>
+	<section class="index">
+		{{filter_data}}
 		<header class="ele-header">
 			<section class="ele-header-container">
 				<div data-aria = "hhhhh" class="ele-header-aria" @click="$emit('openSearch')">
@@ -119,11 +120,10 @@
 			},
 			userId:function(cur_val){},
 			filter_data:{
-				deep:true,								//开启深度监听，数据对象中属性发生变化才能监听到（一层层遍历对象，添加监听）容易影响性能
-				immediate: false,						//默认也是false （只是做个参考属性） 绑定是是否触发 默认false时绑定监听数据不会执行函数
 				handler(cur_val){
 					this.reShoplist();
-				}
+				},
+				deep:true								//开启深度监听，数据对象中属性发生变化才能监听到（一层层遍历对象，添加监听）容易影响性能
 			}
 		},
 		methods:{
@@ -216,7 +216,8 @@
 				this.city = '未能获取地址';
 			},
 			getShoplist:function(){
-				axios.get(`/restapi/shopping/v3/restaurants?latitude=${this.city_info.latitude}&longitude=${this.city_info.longitude}&offset=${this.offset}&limit=8&extras[]=activities&extras[]=tags&extra_filters=home${this.res_url}&rank_id=&terminal=h5`).then((shopList) => {
+				let res = (this.res_url == undefined) ? (`/restapi/shopping/v3/restaurants?latitude=${this.city_info.latitude}&longitude=${this.city_info.longitude}&offset=${this.offset}&limit=8&extras[]=activities&extras[]=tags&extra_filters=home${this.res_url}&rank_id=&terminal=h5`) : (`/restapi/shopping/v3/restaurants?latitude=${this.city_info.latitude}&longitude=${this.city_info.longitude}&offset=${this.offset}&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5`);
+				axios.get(res).then((shopList) => {
 					this.shoplist = this.shoplist.concat(shopList.data.items); 
 					this.load_data = this.load_data && false;
 					this.loadAll = (shopList.data.items.length == 0) && true; 
@@ -237,7 +238,6 @@
 </script>
 
 <style scoped>
-	
 	/*>>>穿透scoped  作用其他组件css*/
 	.ele-header{
 		padding: 2.666667vw 3.733333vw 0;

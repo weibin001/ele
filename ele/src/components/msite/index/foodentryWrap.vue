@@ -1,5 +1,5 @@
 <template>
-	<section class="foodentryWrap">
+	<section class="foodentryWrap" v-once>
 		<div class="shellAnimation">
 			<div class="shellcontainer">
 				<div class="shellbox"></div>
