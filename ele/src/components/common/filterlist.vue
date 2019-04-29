@@ -66,7 +66,7 @@
 
 <script>
 	/*品质联盟懒得弄-.-!!*/
-	import axios from 'axios';
+	// import axios from 'axios';
 	import { createNamespacedHelpers } from 'vuex'
 	const { mapState } = createNamespacedHelpers('user')
 	const { mapGetters:mapFilterGetters , mapActions:mapFilterActions } = createNamespacedHelpers('filter')
@@ -175,7 +175,7 @@
 				}
 			},
 			getFilter:function(){
-				axios.get('/pizza/shopping/restaurants/batch_filter?latitude=31.588285&longitude=120.777712&terminal=h5').then( (filter) => {				
+				this.$http.get('/pizza/shopping/restaurants/batch_filter?latitude=31.588285&longitude=120.777712&terminal=h5').then( (filter) => {				
 					this.show = true;
 					this.bar = filter.data.bar;
 					this.outside = filter.data.outside;

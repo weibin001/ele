@@ -81,7 +81,7 @@
 </template>
 
 <script>
-	import axios from 'axios';
+	// import axios from 'axios';
 	export default{
 		name:'discover',
 		data(){
@@ -89,8 +89,8 @@
 				discover:[],
 			}
 		},
-		mounted(){
-			axios.get('/restapi/member/gifts/suggest').then((discover)=>{
+		created(){
+			this.$http.get('/restapi/member/gifts/suggest').then((discover)=>{
 				this.discover = discover.data.discover;
 				this.discover = this.discover.slice(0,3);
 			}).catch(error =>{

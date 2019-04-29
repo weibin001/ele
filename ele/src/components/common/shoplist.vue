@@ -77,7 +77,7 @@
 
 <script>
 	import { Spinner } from 'mint-ui';
-	import axios from 'axios';
+	// import axios from 'axios';
 	export default {
 		name:'ShopList',
 		data(){

@@ -40,7 +40,7 @@
 <script>
 	import { createNamespacedHelpers } from 'vuex'
 	const { mapState , mapActions } = createNamespacedHelpers('user')
-	import axios from 'axios';
+	//import axios from 'axios';
 	export default{
 		name:'SearchCity',
 		data(){
@@ -75,7 +75,7 @@
 				this.$emit('close','search');
 			},
 			getQuery:function(index){
-				axios.get(`/restapi/bgs/poi/search_poi_nearby_alipay?keyword=${index}&offset=0&limit=20`).then( (query) => {
+				this.$http.get(`/restapi/bgs/poi/search_poi_nearby_alipay?keyword=${index}&offset=0&limit=20`).then( (query) => {
 					this.query = query.data;
 				}).catch((err) => {
 					console.log(err.message);

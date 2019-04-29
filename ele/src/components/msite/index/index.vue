@@ -103,7 +103,7 @@
 <script>
 /*如果当前页觉得乱的话 可使用传给子组件商品列表请求的url 在子组件上请求数据（请求和无限加载函数搬过去） */
 /*$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM*/
-import axios from 'axios'
+//import axios from 'axios'
 import { Spinner } from 'mint-ui'
 import ShopList from '../../common/shoplist'
 import FilterList from '../../common/filterlist'
@@ -283,7 +283,7 @@ export default {
     getCity: function(latitude, longitude) {
       //获取城市传递给Vuex
       //axios 基于promise 参考上方注释
-      axios
+      this.$http
         .get(
           `restapi/bgs/poi/reverse_geo_coding?latitude=${latitude}&longitude=${longitude}`
         )
@@ -319,7 +319,7 @@ export default {
             }&longitude=${this.city_info.longitude}&offset=${
               this.offset
             }&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5`
-      axios
+      this.$http
         .get(res)
         .then(shopList => {
           this.shoplist = this.shoplist.concat(shopList.data.items)

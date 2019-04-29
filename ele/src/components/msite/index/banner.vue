@@ -28,7 +28,7 @@
 
 <script>
 	import { Swipe , SwipeItem } from 'mint-ui';
-	import axios from 'axios';
+	// import axios from 'axios';
 	import { createNamespacedHelpers } from 'vuex'
 	const { mapState } = createNamespacedHelpers('user')
 	export default{
@@ -55,7 +55,7 @@
 		},
 		methods:{
 			getBanner:function(latitude,longitude){
-				axios.get('/restapi/shopping/v2/banners?consumer=1&type=1&latitude=31.588285&longitude=120.777712').then( (banner) => {
+				this.$http.get('/restapi/shopping/v2/banners?consumer=1&type=1&latitude=31.588285&longitude=120.777712').then( (banner) => {
 					setTimeout(()=>{		//节目效果 （因为使用mockjs 伪数据 显示快 没有加载效果）
 						this.banner = banner.data.banner;
 					},500)
